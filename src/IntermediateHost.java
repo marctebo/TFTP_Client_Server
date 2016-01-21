@@ -67,7 +67,8 @@ public class IntermediateHost {
 			System.out.println(request + " Request received");
 			String fileName = "";
 			String mode2 = "";
-			String infoBytes = "";
+			String infoString = "";
+			byte[] msgBytes = new byte[2];
 			
 			//parsing array
 			if(!request.equals("INVALID")){
@@ -93,8 +94,11 @@ public class IntermediateHost {
 				mode2 = new String(mode);
 				System.out.println("Mode: " + mode2);
 				
-				infoBytes = new String(msg,0,fileName.length() + mode2.length() + 4);
-				System.out.println("Information in Bytes: " + infoBytes + "\n");
+				int msgLength = fileName.length() + mode2.length() + 4;
+				infoString = new String(msg,0,msgLength);
+				System.out.println("Information as String: " + infoString);
+				msgBytes = Arrays.copyOfRange(msg, 0, msgLength);
+				System.out.println("Information as Bytes: "+ Arrays.toString(msgBytes) + "\n");
 			}
 			
 			//forming packet to send to server
@@ -114,7 +118,10 @@ public class IntermediateHost {
 			if(!request.equals("INVALID")){
 				System.out.println("File Name: " + fileName);
 				System.out.println("Mode: " + mode2);
-				System.out.println("Information in Bytes: " + infoBytes + "\n");
+				System.out.println("Information as String: " + infoString);
+				int msgLength = fileName.length() + mode2.length() + 4;
+				msgBytes = Arrays.copyOfRange(msg, 0, msgLength);
+				System.out.println("Information as Bytes: "+ Arrays.toString(msgBytes) + "\n");
 			}
 			
 			//sending the packet to the server

@@ -86,6 +86,7 @@ public class Server {
 			System.out.println(request + " Request received");
 			byte[] file = new byte[1];
 			byte[] mode = new byte[1];
+			byte[] msgBytes = new byte[1];
 			int count = 0;
 			for(int i = 2; i < msg.length; i++){				
 				if(msg[i] == 0){
@@ -109,8 +110,11 @@ public class Server {
 			int len = file.length + mode.length + 4;
 			System.out.println("Length: " + len);
 			
-			String infoBytes = new String(msg,0,fileName.length() + mode2.length() + 4);
-			System.out.println("Information in Bytes: " + infoBytes + "\n");
+			String infoString = new String(msg,0,fileName.length() + mode2.length() + 4);
+			System.out.println("Information as String: " + infoString);
+
+			msgBytes = Arrays.copyOfRange(msg, 0, len);
+			System.out.println("Information as Bytes: "+ Arrays.toString(msgBytes) + "\n");
 			
 			
 			sendPacket = new DatagramPacket(data,data.length,

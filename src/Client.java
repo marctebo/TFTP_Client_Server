@@ -97,7 +97,8 @@ public class Client {
 			System.out.println("Length: " + len1);
 
 			String info = new String(msg,0,len1);
-			System.out.println("Information in Bytes: " + info);
+			System.out.println("Information as String: " + info);
+			System.out.println("Information as Bytes: "+ Arrays.toString(msg));
 			
 			//sending the packet
 			try{
@@ -129,9 +130,11 @@ public class Client {
 			System.out.println("Length: " + len2);
 			
 			System.out.print("Containing: ");
+			
 			for(int k = 0; k<data.length;k++){
 				System.out.print(" " + data[k]);
 			}
+			
 			//String received = new String(data,0,len2);
 			System.out.println("\n");
 		}
