@@ -129,8 +129,11 @@ public class Client {
 			System.out.println("Length: " + len2);
 			
 			System.out.print("Containing: ");
-			String received = new String(data,0,len2);
-			System.out.println(received + "\n");
+			for(int k = 0; k<data.length;k++){
+				System.out.print(" " + data[k]);
+			}
+			//String received = new String(data,0,len2);
+			System.out.println("\n");
 		}
 	}
 	

@@ -120,8 +120,13 @@ public class Server {
 			System.out.println("Server sent packet");
 			System.out.println("To Host: " + sendPacket.getAddress());
 			System.out.println("Destination host port: " + sendPacket.getPort());
-			String response = new String(data,0,data.length);
-			System.out.println("Response Packet: " + response + "\n");
+			System.out.print("Response Packet: ");
+			
+			for(int k = 0; k<data.length;k++){
+				System.out.print(" " + data[k]);
+			}
+			
+			System.out.println("\n");
 			
 			try{
 				sendSocket = new DatagramSocket();

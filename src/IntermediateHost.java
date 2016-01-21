@@ -147,8 +147,12 @@ public class IntermediateHost {
 			System.out.println("Length: " + len);
 			
 			System.out.print("Containing: ");
-			String received = new String(data,0,len);
-			System.out.println(received + "\n");
+			
+			for(int k = 0; k<data.length;k++){
+				System.out.print(" " + data[k]);
+			}
+			
+			System.out.println("\n");
 			
 			//forming packet to send to client
 			sendPacketClient = new DatagramPacket(data,data.length,
@@ -168,8 +172,13 @@ public class IntermediateHost {
 			System.out.println("Intermediate Host sent packet");
 			System.out.println("To Host: " + sendPacketClient.getAddress());
 			System.out.println("Destination host port: " + sendPacketClient.getPort());
-			String response = new String(data,0,data.length);
-			System.out.println("Response Packet: " + response + "\n");
+			System.out.print("Response Packet: ");
+			
+			for(int k = 0; k<data.length;k++){
+				System.out.print(" " + data[k]);
+			}
+			
+			System.out.println("\n");
 			
 			//sending packet to client
 		    try {
